@@ -1,0 +1,37 @@
+﻿@page
+@model RazorPages.Pages.Anions.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Anion</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Anion.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Anion.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Anion.Symbol)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Anion.Symbol)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Anion.Concentration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Anion.Concentration)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Anion?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

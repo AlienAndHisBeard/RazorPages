@@ -1,0 +1,76 @@
+﻿@page
+@using DataModel
+@model RazorPages.Pages.Products.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" EncType="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.Id" />
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Type" class="control-label"></label>
+                <select asp-for="Product.Type" asp-items="Html.GetEnumSelectList<DrinkTypes>()" class="form-select">
+                </select>
+                <span asp-validation-for="Product.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.ProducerId" class="control-label"></label>
+                <select asp-for="Product.ProducerId" class="form-control" asp-items="ViewBag.ProducerId"></select>
+                <span asp-validation-for="Product.ProducerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Ph" class="control-label"></label>
+                <input asp-for="Product.Ph" class="form-control" type="number" step="0.1" value="Product.Ph" />
+                <span asp-validation-for="Product.Ph" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cations" class="control-label">Cations, select one or many</label>
+                <select multiple asp-for="Cations" asp-items="ViewBag.Cations" class="form-select">
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Anions" class="control-label">Anions, select one or many</label>
+                <select multiple asp-for="Anions" asp-items="ViewBag.Anions" class="form-select">
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.PackingType" class="control-label"></label>
+                <input asp-for="Product.PackingType" class="form-control" />
+                <span asp-validation-for="Product.PackingType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Volume" class="control-label"></label>
+                <input asp-for="Product.Volume" class="form-control" step="0.1" min="0.025" />
+                <span asp-validation-for="Product.Volume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.ImageData" class="control-label"></label>
+                <input type="file" asp-for="FilePath" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
